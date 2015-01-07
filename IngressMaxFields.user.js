@@ -90,9 +90,7 @@ function wrapper() {
 
 		for ( var x in window.portals) {
 			var p = window.portals[x];
-			if(antal < 50)
-			{
-				if (inBounds(p)) {
+			if (inBounds(p)) {
 					antal = antal + 1;
 					var href = 'https://www.ingress.com/intel?ll=' + p._latlng.lat
 							+ ',' + p._latlng.lng + '&z=17&pll=' + p._latlng.lat
@@ -101,14 +99,6 @@ function wrapper() {
 					var str2 = str1.replace(';', ' ');
 					o.push(str2 + ";" + href);
 				}
-			}
-			else
-			{
-				if (tooMany == 0 )
-				{
-					tooMany = 1;
-				}
-			}
 		}
 
 		var dialog = window
@@ -125,9 +115,6 @@ function wrapper() {
 				($(window).height() - dialog.height()) / 2).css("left",
 				($(window).width() - dialog.width()) / 2);
 		$("#imfCSVExport").val(o.join("\n"));
-		if ( tooMany == 1) {
-			alert("Too many portals visible, only showing 50!");
-		}
 		return dialog;
 	}
 	// setup function called by IITC
